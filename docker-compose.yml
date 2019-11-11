@@ -1,0 +1,31 @@
+# version: '3.1'
+# services:
+#   mysql-server:
+#     image: mysql:latest
+#     container_name: mysql-server-bam
+#     command: mysql -h mysql-server -u root -p
+#     volumes:
+#       - ${PWD_FOLDER}:/host
+#     environment:
+#       MYSQL_ROOT_PASSWORD: docker # User: root
+#     ports:
+#      - 3307:3306
+# volumes:
+#   db-data:
+# networks:
+#   default:
+#     external:
+#       name: ga-tech
+
+
+      # version: '3.1'
+services:
+  client:
+    image: mysql:latest
+    command: mysql -h mysql-server -u root -p
+    volumes:
+     - ${PWD_FOLDER}:/host
+networks:
+  default:
+    external:
+      name: ga-tech      
