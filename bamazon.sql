@@ -14,11 +14,16 @@ CREATE TABLE products (
 );
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Iphone", "Electronics", 20, 3);
+VALUES  ("DVD", "Electronics", 5, 15),
+        ("USB", "Electronics", 20, 20),
+        ("CD", "Electronics", 3, 12),
+        ("Charger", "Electronics", 15, 19),
+        ("Columbia", "Boots", 150, 3),
+        ("Donner", "Boots", 130, 5),
+        ("Timberland", "Boots", 90, 6),
+        ("Socks", "Clothing", 10, 15),
+        ("Shirts", "Clothing", 25, 13);
+
  
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Android", "Electronics", 5, 3);
- 
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Blackberry", "Electronics", 6, 3);
+
  
