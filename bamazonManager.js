@@ -30,81 +30,121 @@ inquirer.prompt([{
     switch (res.option[0]) {
         case "View Products for Sale":
             productsForSale()
-        break;
+            break;
         case "View Low Inventory":
             lowInventory()
-        break;
+            break;
         case "Add to Inventory":
             addToInventory()
-        break;
+            break;
         case "Add New Product":
             addNewProduct()
-        break;
+            break;
 
     }
 })
 
 
-productsForSale=()=>{
+productsForSale = () => {
     console.log("1")
     connection.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
         console.log(`ID Name        Department    Price  Stock`)
         console.log("-----------------------------------------")
         for (let i = 0; i < res.length; i++) {
-          let data = res[i];
-          let row = new dateFormat(data.item_id, data.product_name, data.department_name, data.price, data.stock_quantity)
-          row.printBody()
+            let data = res[i];
+            let row = new dateFormat(data.item_id, data.product_name, data.department_name, data.price, data.stock_quantity)
+            row.printBody()
         }
-        console.log("=========================================") 
-      });
+        console.log("=========================================")
+    });
 
 }
-lowInventory=()=>{
+lowInventory = () => {
     console.log("2")
     connection.query("SELECT * FROM products WHERE stock_quantity<5", function (err, res) {
         if (err) throw err;
         console.log(`ID Name        Department    Price  Stock`)
         console.log("-----------------------------------------")
         for (let i = 0; i < res.length; i++) {
-          let data = res[i];
-          let row = new dateFormat(data.item_id, data.product_name, data.department_name, data.price, data.stock_quantity)
-          row.printBody()
+            let data = res[i];
+            let row = new dateFormat(data.item_id, data.product_name, data.department_name, data.price, data.stock_quantity)
+            row.printBody()
         }
-        console.log("=========================================") 
-      });
+        console.log("=========================================")
+    });
 }
-addToInventory=()=>{
+addToInventory = () => {
     console.log("3")
     addInviPrompt()
 
 }
-addNewProduct=()=>{
+addNewProduct = () => {
     console.log("4")
+    addNewItem()
 }
 
 
-addInviPrompt=()=>{
-    inquirer.prompt([
-    {
-        name: "id",
-        message: "What is the ID off the product you are adding?"
-    },
-    {
-        name: "quan",
-        message: "How many items are you adding"
-    }
-]).then(function(data){
-    connection.query(`UPDATE products SET stock_quantity=${stock_quantity + data.quan} WHERE item_id=${data.id}`,function (err, res){
-        if (err) throw err;
-        console.log("updated table")
-    }
-    ).then(function(){
+addInviPrompt = () => {
+    inquirer.prompt([{
+            name: "id",
+            message: "What is the ID off the product you are adding?"
+        },
+        {
+            name: "quan",
+            message: "How many items are you adding"
+        }
+    ]).then(function (data) {
+        connection.query(`UPDATE products SET stock_quantity=stock_quantity + ${data.quan} WHERE item_id=${data.id}`, function (err, res) {
+            if (err) throw err;
+            console.log("updated table")
+        })
 
         connection.query(`SELECT * FROM products WHERE item_id=${data.id}`, function (err, res) {
             if (err) throw err;
-    
+            console.log(`ID Name        Department    Price  Stock`)
+            console.log("-----------------------------------------")
+            for (let i = 0; i < res.length; i++) {
+                let data = res[i];
+                let row = new dateFormat(data.item_id, data.product_name, data.department_name, data.price, data.stock_quantity)
+                row.printBody()
+            }
+            console.log("=========================================")
         })
+
+        console.log('add to invin')
     })
-    console.log('add to invin')
-})}
+}
+
+addNewItem = () => {
+    inquirer.prompt([
+        {
+            name: "name",
+            message: "What is the product name?"
+        },
+        {
+            name: "dept",
+            message: "What is the department name?"
+
+        },
+        {
+            name: "price",
+            message: "What is the products price?"
+
+        },
+        {
+            name: "quantity",
+            message: "How many of this Item are in stock?"
+
+        }
+    ]).then(function(data){
+        connection.query(`INSERT INTO products (product_name, department_name, price, stock_quantity) \n
+        VALUES('${data.name}', '${data.dept}', ${data.price}, ${data.quantity})`, function (err, res) {
+            if (err) throw err;
+                console.log("yes")
+                console.log(data)
+                console.log(res)
+            })
+
+    })
+}
