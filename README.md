@@ -16,6 +16,7 @@ This App can be used as a basic shopping model. It utilized node.js, docker and 
 * To run the app start with a  
     - node bamazonCustomer.js or bamazonManager.js
 * If you chose customer you will be given a list of the available items and you can then select the item by its ID and select the quantity.
+
 * Next you will be told if there are enough items available.
 * on the manager side you will be given 4 options
     - View available products
@@ -24,8 +25,6 @@ This App can be used as a basic shopping model. It utilized node.js, docker and 
     - add a new product for sale
 
 ## Links
-* [Youtube Link](https://youtu.be/cEWLzA3LyCA) 
-
 * [Github Link](https://github.com/Fgailey/bamazon)
 
 * [LinkedIn](https://www.linkedin.com/in/foster-gailey-391292165/)

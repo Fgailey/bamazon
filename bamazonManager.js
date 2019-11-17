@@ -117,8 +117,7 @@ addInviPrompt = () => {
 }
 
 addNewItem = () => {
-    inquirer.prompt([
-        {
+    inquirer.prompt([{
             name: "name",
             message: "What is the product name?"
         },
@@ -137,14 +136,14 @@ addNewItem = () => {
             message: "How many of this Item are in stock?"
 
         }
-    ]).then(function(data){
+    ]).then(function (data) {
         connection.query(`INSERT INTO products (product_name, department_name, price, stock_quantity) \n
         VALUES('${data.name}', '${data.dept}', ${data.price}, ${data.quantity})`, function (err, res) {
             if (err) throw err;
-                console.log("yes")
-                console.log(data)
-                console.log(res)
-            })
+            // console.log("yes")
+            // console.log(data)
+            // console.log(res)
+        })
 
     })
 }

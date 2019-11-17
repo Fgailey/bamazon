@@ -49,7 +49,6 @@ purchasePrompt = () => {
   ]).then(function (response) {
     // console.log(response)
     order = new Items(response.id, response.quantity)
-    console.log(order)
     afterOrder()
   })
 
@@ -67,11 +66,9 @@ afterOrder = () => {
     if (stock < order.quantity) {
       console.log("Insufficient quantity!")
     } else {
-      console.log(`We have your ${res[0].product_name}('s) is/are in stock, your order is being confirmed`)
+      console.log(`We have your ${res[0].product_name}('s) in stock, your order is being confirmed`)
       console.log(`The total price of your order is $${res[0].price * order.quantity}`)
       stock = stock - order.quantity
-      console.log(stock)
-      console.log(typeof (stock))
       updateStock()
     }
     //connection.end();
@@ -81,7 +78,6 @@ afterOrder = () => {
 updateStock = () => {
   connection.query(`UPDATE products SET stock_quantity=${stock} WHERE item_id=${order.id}`, function (err, res) {
     if (err) throw err;
-    console.log(res)
   });
 }
 
