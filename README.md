@@ -18,7 +18,7 @@ This App can be used as a basic shopping model. It utilized node.js, docker and 
 * If you chose customer you will be given a list of the available items and you can then select the item by its ID and select the quantity.  
   ![Bamazon Order](Images/BamazonOrder.png)
 * Next you will be told if there are enough items available.  
-![Bamazon out](Images/ManagerOut.png)
+![Bamazon out](Images/BamazonOut.png)
 
 * on the manager side you will be given 4 options  
 ![Manager prompts](Images/ManagerPrompt.png)
