@@ -1,4 +1,4 @@
-# bamazon
+# Bamazon
 
 **************************
 ## Basic Function  
@@ -15,14 +15,21 @@ This App can be used as a basic shopping model. It utilized node.js, docker and 
  ## Instructions
 * To run the app start with a  
     - node bamazonCustomer.js or bamazonManager.js
-* If you chose customer you will be given a list of the available items and you can then select the item by its ID and select the quantity.
+* If you chose customer you will be given a list of the available items and you can then select the item by its ID and select the quantity.  
+  ![Bamazon Order](Images/BamazonOrder.png)
+* Next you will be told if there are enough items available.  
+![Bamazon out](Images/ManagerOut.png)
 
-* Next you will be told if there are enough items available.
-* on the manager side you will be given 4 options
-    - View available products
-    - View low inventory items
-    - add items to the inventory
-    - add a new product for sale
+* on the manager side you will be given 4 options  
+![Manager prompts](Images/ManagerPrompt.png)
+    - View available products  
+    ![Manager all Stock](Images/ManagerStock.png)
+    - View low inventory items  
+    ![Manager Low Stock](Images/ManagerLowStock.png)
+    - add items to the inventory  
+    ![Manager restock](Images/ManagerStockUpdate.png)
+    - add a new product for sale  
+    ![Manager New Item](Images/ManagerNewItem.png)
 
 ## Links
 * [Github Link](https://github.com/Fgailey/bamazon)
